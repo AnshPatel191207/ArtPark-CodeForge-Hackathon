@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GlassCard } from '../components/ui';
-import { BookOpen, CheckCircle2, Circle, ChevronRight, Star, Clock, Lock } from 'lucide-react';
+import { BookOpen, CheckCircle2, Circle, ChevronRight, Star, Clock, Lock, Download } from 'lucide-react';
 
 export const RoadmapPreview = () => {
   const modules = [
@@ -26,6 +26,12 @@ export const RoadmapPreview = () => {
         <p className="text-slate-400 max-w-lg mx-auto font-inter text-sm">
           A blueprint for your transition from Senior Neural Architect to Distributed Systems Lead based on inferred skill gaps.
         </p>
+        <button
+          onClick={() => window.print()}
+          className="btn-neon-primary px-8 py-3 text-xs uppercase tracking-widest inline-flex items-center gap-2 mt-4"
+        >
+          <Download size={14} /> Export PDF
+        </button>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

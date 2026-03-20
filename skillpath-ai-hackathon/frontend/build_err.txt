@@ -1,9 +1,0 @@
-
-C:\Users\rauna\OneDrive\Desktop\ArtPark-CodeForge-Hackathon\skillpath-ai-hackathon\frontend\src\components\layout\Sidebar\Sidebar.jsx
-  2:19  error  'useLocation' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
-
-C:\Users\rauna\OneDrive\Desktop\ArtPark-CodeForge-Hackathon\skillpath-ai-hackathon\frontend\src\components\reasoning\ReasoningTrace\ReasoningTrace.jsx
-  81:33  error  Parsing error: Expecting Unicode escape sequence \uXXXX
-
-??? 2 problems (2 errors, 0 warnings)
-

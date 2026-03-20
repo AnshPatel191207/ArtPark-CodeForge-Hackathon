@@ -9,7 +9,9 @@ import {
   FileText, 
   LogOut,
   User,
-  Globe
+  Globe,
+  Users,
+  Video
 } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
@@ -54,6 +56,8 @@ export const Sidebar = () => {
         <SidebarItem to="/analytics" icon={BarChart3} label="Analytics" />
         <SidebarItem to="/export" icon={FileText} label="Reports" />
         <SidebarItem to="/demo" icon={Globe} label="Cross-Domain" />
+        <SidebarItem to="/manager" icon={Users} label="HR Dashboard" />
+        <SidebarItem to="/interview" icon={Video} label="Mock Interview" />
       </nav>
 
       <div className={`mt-auto space-y-2 pt-6 border-t ${theme === 'dark' ? 'border-white/10' : 'border-slate-200'}`}>

@@ -16,8 +16,11 @@ import { Profile } from './pages/Profile';
 import { RoadmapPreview } from './pages/RoadmapPreview';
 import { ReportExport } from './pages/ReportExport';
 import { CrossDomainDemo } from './pages/CrossDomainDemo';
+import { ManagerDashboard } from './pages/ManagerDashboard';
+import { MockInterview } from './pages/MockInterview';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import { ErrorBoundary } from './components/ui/ErrorBoundary';
+import { ChatWidget } from './components/ui/ChatWidget';
 
 const AppLayout = ({ children }) => {
   const { theme, isRevealing, revealPosition } = useTheme();
@@ -62,6 +65,7 @@ const AppLayout = ({ children }) => {
           <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
         </main>
       </div>
+      <ChatWidget />
     </div>
   );
 };
@@ -86,6 +90,8 @@ function App() {
             <Route path="/demo" element={<AppLayout><CrossDomainDemo /></AppLayout>} />
             <Route path="/profile" element={<AppLayout><Profile /></AppLayout>} />
             <Route path="/roadmap-preview" element={<AppLayout><RoadmapPreview /></AppLayout>} />
+            <Route path="/manager" element={<AppLayout><ManagerDashboard /></AppLayout>} />
+            <Route path="/interview" element={<AppLayout><MockInterview /></AppLayout>} />
             
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
@@ -96,3 +102,4 @@ function App() {
 }
 
 export default App;
+
