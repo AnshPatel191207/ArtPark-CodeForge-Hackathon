@@ -34,6 +34,23 @@
   --header-height: 64px;
 }
 
+.dark {
+  --color-bg-base: #0F172A;
+  --color-bg-surface: #1E293B;
+  --color-bg-hover: #334155;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #CBD5E1;
+  --color-text-muted: #64748B;
+  --color-border: #334155;
+  --color-primary-light: rgba(59, 130, 246, 0.15);
+  --color-success-light: rgba(16, 185, 129, 0.15);
+  --color-warning-light: rgba(245, 158, 11, 0.15);
+  --color-danger-light: rgba(239, 68, 68, 0.15);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --shadow-card: 0 4px 20px -2px rgb(0 0 0 / 0.2);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

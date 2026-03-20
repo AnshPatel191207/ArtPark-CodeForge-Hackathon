@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Bell, Search } from 'lucide-react';
+import { Bell, Search, Moon, Sun } from 'lucide-react';
 import styles from './Header.module.css';
 
 const routeNames = {
@@ -15,6 +15,20 @@ export const Header = () => {
   const location = useLocation();
   const pageTitle = routeNames[location.pathname] || 'SkillPath AI';
 
+  const [isDarkMode, setIsDarkMode] = React.useState(() => {
+    return document.documentElement.classList.contains('dark');
+  });
+
+  const toggleDarkMode = () => {
+    if (isDarkMode) {
+      document.documentElement.classList.remove('dark');
+      setIsDarkMode(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      setIsDarkMode(true);
+    }
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.titleContainer}>
@@ -27,6 +41,10 @@ export const Header = () => {
           <input type="text" placeholder="Search skills, courses..." className={styles.searchInput} />
         </div>
         
+        <button className={styles.iconButton} onClick={toggleDarkMode} aria-label="Toggle Dark Mode">
+          {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
+
         <button className={styles.iconButton} aria-label="Notifications">
           <Bell size={20} />
           <span className={styles.notificationBadge}></span>

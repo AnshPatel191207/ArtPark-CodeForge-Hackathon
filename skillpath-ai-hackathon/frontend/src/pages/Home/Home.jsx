@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Play, Server, Zap, Brain, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Play, Server, Zap, Brain, ShieldCheck, Map } from 'lucide-react';
 import styles from './Home.module.css';
 
 export const Home = () => {
@@ -113,7 +113,4 @@ export const Home = () => {
   );
 };
 
-// Assuming lucide-react Map exists, wait, we imported different ones. Let's fix that.
-// Need to add Map to the imports. Let's just create a quick Map icon stub since I didn't import it above, or I can use another icon. I will use 'Network' or 'BarChart2'.
-import { Network } from 'lucide-react';
-// Then I will replace <Map /> with <Network />
+
