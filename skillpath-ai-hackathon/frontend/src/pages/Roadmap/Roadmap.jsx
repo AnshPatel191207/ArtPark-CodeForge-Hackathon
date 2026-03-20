@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Clock, BookOpen, ExternalLink, AlertTriangle, CheckCircle, Video, Code } from 'lucide-react';
+import { Calendar, Clock, BookOpen, ExternalLink, AlertTriangle, CheckCircle, Video, Code, Download } from 'lucide-react';
 import styles from './Roadmap.module.css';
 
 const roadmapData = [
@@ -75,16 +75,24 @@ export const Roadmap = () => {
           </div>
         </div>
         
-        <div className={styles.metricsBox}>
-          <div className={styles.metric}>
-            <span className={styles.metricLabel}>Total Duration</span>
-            <span className={styles.metricValue}>20 Hours</span>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <div className={styles.metricsBox}>
+            <div className={styles.metric}>
+              <span className={styles.metricLabel}>Total Duration</span>
+              <span className={styles.metricValue}>20 Hours</span>
+            </div>
+            <div className={styles.metricDivider}></div>
+            <div className={styles.metric}>
+              <span className={styles.metricLabel}>Time Saved</span>
+              <span className={styles.metricValueSuccess}>-35 Hours</span>
+            </div>
           </div>
-          <div className={styles.metricDivider}></div>
-          <div className={styles.metric}>
-            <span className={styles.metricLabel}>Time Saved</span>
-            <span className={styles.metricValueSuccess}>-35 Hours</span>
-          </div>
+          <button 
+            onClick={() => window.print()}
+            style={{ padding: '0.5rem 1rem', background: 'var(--color-primary)', color: 'white', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '500', cursor: 'pointer', border: 'none', height: '100%' }}
+          >
+            <Download size={18} /> Export
+          </button>
         </div>
       </header>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { Bell, Search, Moon, Sun } from 'lucide-react';
 import styles from './Header.module.css';
 
@@ -45,14 +45,14 @@ export const Header = () => {
           {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
         </button>
 
-        <button className={styles.iconButton} aria-label="Notifications">
+        <Link to="/notifications" className={styles.iconButton} aria-label="Notifications">
           <Bell size={20} />
           <span className={styles.notificationBadge}></span>
-        </button>
+        </Link>
 
-        <div className={styles.avatar}>
+        <Link to="/profile" className={styles.avatar} style={{ cursor: 'pointer' }}>
           <img src="https://ui-avatars.com/api/?name=Demo+User&background=3B82F6&color=fff" alt="User Avatar" />
-        </div>
+        </Link>
       </div>
     </header>
   );

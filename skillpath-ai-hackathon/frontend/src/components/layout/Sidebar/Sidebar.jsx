@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, UploadCloud, Map, BarChart2, CheckCircle } from 'lucide-react';
+import { Home, UploadCloud, Map, BarChart2, CheckCircle, LogOut, Users, Video } from 'lucide-react';
 import styles from './Sidebar.module.css';
 
 const navItems = [
@@ -8,6 +8,8 @@ const navItems = [
   { path: '/upload', label: 'Upload & Analyze', icon: UploadCloud },
   { path: '/roadmap', label: 'Roadmap', icon: Map },
   { path: '/analysis', label: 'Skills Analysis', icon: BarChart2 },
+  { path: '/manager', label: 'HR View', icon: Users },
+  { path: '/interview', label: 'Mock Interview', icon: Video },
 ];
 
 export const Sidebar = () => {
@@ -40,6 +42,13 @@ export const Sidebar = () => {
           );
         })}
       </nav>
+
+      <div className={styles.navSection} style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--color-border)', marginBottom: '1rem' }}>
+        <NavLink to="/login" className={styles.navItem}>
+          <LogOut className={styles.navIcon} size={20} />
+          <span>Sign Out</span>
+        </NavLink>
+      </div>
 
       <div className={styles.statusBox}>
         <div className={styles.statusHeader}>
