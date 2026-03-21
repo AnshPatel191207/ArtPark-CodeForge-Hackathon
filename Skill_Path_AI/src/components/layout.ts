@@ -310,6 +310,58 @@ body{
 }
 .status-dot{width:6px;height:6px;background:var(--emerald);border-radius:50%;animation:pulse-dot 2s infinite}
 @keyframes pulse-dot{0%,100%{opacity:1;box-shadow:0 0 0 0 var(--emerald-glow)}50%{opacity:0.7;box-shadow:0 0 0 4px transparent}}
+
+/* ── MAIN CONTENT ── */
+.main-content{
+  margin-left:var(--sidebar-w);
+  padding-top:var(--header-h);
+  min-height:100vh;
+}
+.content-inner{padding:32px}
+
+/* ── GLASS CARDS ── */
+.glass-card{
+  background:var(--bg-glass);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--border-glass);
+  border-radius:var(--radius-xl);
+  box-shadow:var(--shadow-card);
+  position:relative;overflow:hidden;
+}
+.glass-card::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,transparent 50%);
+}
+.card-glow-blue{box-shadow:var(--shadow-card),var(--shadow-glow-blue)}
+.card-glow-gold{box-shadow:var(--shadow-card),var(--shadow-glow-gold)}
+.card-glow-emerald{box-shadow:var(--shadow-card),var(--shadow-glow-emerald)}
+.card-glow-violet{box-shadow:var(--shadow-card),var(--shadow-glow-violet)}
+
+/* ── STAT CARD ── */
+.stat-card{
+  background:var(--bg-glass);backdrop-filter:blur(20px);
+  border:1px solid var(--border-glass);border-radius:var(--radius-xl);
+  padding:24px;position:relative;overflow:hidden;
+  transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.stat-card:hover, .glass-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--shadow-card), 0 20px 40px rgba(0,0,0,0.4), 0 0 20px var(--royal-blue-glow);
+  border-color: rgba(37,99,235,0.4);
+}
+.stat-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,currentColor,transparent);
+  opacity:0.3;
+}
+.stat-label{font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:12px}
+.stat-value{font-size:36px;font-weight:800;font-family:var(--font-display);line-height:1;margin-bottom:8px}
+.stat-change{font-size:12px;color:var(--emerald-light);display:flex;align-items:center;gap:4px}
+.stat-icon-wrap{
+  position:absolute;top:20px;right:20px;width:48px;height:48px;
+  border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;
+  font-size:22px;
+}
 </style>
 </head>
 <body>
