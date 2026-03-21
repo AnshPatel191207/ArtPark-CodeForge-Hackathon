@@ -267,6 +267,49 @@ body{
 }
 .user-name{font-size:13px;font-weight:600;color:var(--text-primary)}
 .user-role{font-size:11px;color:var(--text-muted)}
+
+/* ── HEADER ── */
+.main-header{
+  position:fixed;left:var(--sidebar-w);right:0;top:0;height:var(--header-h);z-index:90;
+  background:rgba(3,7,18,0.9);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border-subtle);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 32px;
+}
+.header-left{display:flex;align-items:center;gap:16px}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted)}
+.breadcrumb-sep{color:var(--text-muted);opacity:0.4}
+.breadcrumb-current{color:var(--text-primary);font-weight:600}
+.page-title{font-size:18px;font-weight:700;color:var(--text-primary);font-family:var(--font-display)}
+.header-right{display:flex;align-items:center;gap:12px}
+.header-search{
+  display:flex;align-items:center;gap:8px;
+  background:var(--bg-alpha-med);border:1px solid var(--border-subtle);
+  border-radius:var(--radius-full);padding:8px 16px;width:220px;
+  transition:all 0.2s;
+}
+.header-search:focus-within{border-color:var(--royal-blue);box-shadow:0 0 0 3px var(--royal-blue-soft)}
+.header-search input{background:none;border:none;outline:none;color:var(--text-primary);font-size:13px;width:100%;font-family:var(--font-body)}
+.header-search input::placeholder{color:var(--text-muted)}
+.header-btn{
+  width:38px;height:38px;border-radius:var(--radius-md);border:1px solid var(--border-subtle);
+  background:var(--bg-alpha-low);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:all 0.2s;position:relative;color:var(--text-secondary);
+}
+.header-btn:hover{background:var(--bg-hover);border-color:var(--royal-blue);color:var(--text-primary)}
+.notif-dot{
+  position:absolute;top:6px;right:6px;width:7px;height:7px;
+  background:var(--gold);border-radius:50%;border:2px solid var(--bg-deep);
+  box-shadow:0 0 6px var(--gold-glow);
+}
+.status-pill{
+  display:flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:var(--radius-full);
+  background:var(--emerald-soft);border:1px solid rgba(16,185,129,0.2);
+  font-size:11px;font-weight:600;color:var(--emerald-light);
+}
+.status-dot{width:6px;height:6px;background:var(--emerald);border-radius:50%;animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;box-shadow:0 0 0 0 var(--emerald-glow)}50%{opacity:0.7;box-shadow:0 0 0 4px transparent}}
 </style>
 </head>
 <body>
