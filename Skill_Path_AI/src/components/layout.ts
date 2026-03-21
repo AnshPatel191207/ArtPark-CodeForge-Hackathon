@@ -421,6 +421,39 @@ body{
 .badge-gold{background:var(--gold-soft);color:var(--gold-light);border:1px solid rgba(252,211,77,0.2)}
 .badge-crimson{background:var(--crimson-soft);color:#FCA5A5;border:1px solid rgba(239,68,68,0.2)}
 .badge-cyan{background:rgba(6,182,212,0.1);color:#67E8F9;border:1px solid rgba(6,182,212,0.2)}
+
+/* ── SECTION HEADER ── */
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.section-title{font-size:16px;font-weight:700;color:var(--text-primary);display:flex;align-items:center;gap:8px}
+.section-title-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:var(--border-subtle);margin:20px 0}
+.divider-glow{background:linear-gradient(90deg,transparent,var(--royal-blue-glow),transparent);height:1px;margin:20px 0}
+
+/* ── PROGRESS BAR ── */
+.progress-bar{height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;position:relative;transition:width 1s ease}
+.progress-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);animation:shimmer 2s infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.progress-blue .progress-fill{background:linear-gradient(90deg,var(--royal-blue),var(--royal-blue-light));box-shadow:0 0 8px var(--royal-blue-glow)}
+.progress-emerald .progress-fill{background:linear-gradient(90deg,var(--emerald),var(--emerald-light));box-shadow:0 0 8px var(--emerald-glow)}
+.progress-gold .progress-fill{background:linear-gradient(90deg,var(--gold),var(--gold-light));box-shadow:0 0 8px var(--gold-glow)}
+.progress-violet .progress-fill{background:linear-gradient(90deg,var(--violet),var(--violet-light));box-shadow:0 0 8px var(--violet-glow)}
+
+/* ── TABLE ── */
+.royal-table{width:100%;border-collapse:collapse}
+.royal-table th{
+  padding:12px 16px;text-align:left;
+  font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);
+  border-bottom:1px solid var(--border-subtle);
+}
+.royal-table td{
+  padding:14px 16px;border-bottom:1px solid var(--bg-alpha-low);
+  font-size:14px;color:var(--text-accent);vertical-align:middle;
+}
+.royal-table tr:hover td{background:rgba(37,99,235,0.04)}
+.royal-table tr:last-child td{border-bottom:none}
 </style>
 </head>
 <body>
