@@ -82,4 +82,79 @@ ${extraHead}
   --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 }
-`; \n}
+.dark {
+  --bg-void: #01040D;
+  --bg-deep: #030712;
+  --bg-navy: #060E1F;
+  --bg-surface: #0A1628;
+  --bg-card: #0F1E35;
+  --bg-glass: rgba(15, 30, 53, 0.7);
+  --bg-hover: rgba(37, 99, 235, 0.08);
+
+  --bg-alpha-low: rgba(255, 255, 255, 0.03);
+  --bg-alpha-med: rgba(255, 255, 255, 0.06);
+  --bg-alpha-high: rgba(255, 255, 255, 0.12);
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #4B5563;
+  --text-accent: #CBD5E1;
+
+  --border-subtle: rgba(148, 163, 184, 0.08);
+  --border-glass: rgba(148, 163, 184, 0.12);
+  --border-glow: rgba(37, 99, 235, 0.35);
+
+  --royal-blue: #2563EB;
+  --royal-blue-light: #3B82F6;
+  --royal-blue-glow: rgba(37, 99, 235, 0.4);
+  --royal-blue-soft: rgba(59, 130, 246, 0.15);
+
+  --emerald: #10B981;
+  --emerald-light: #34D399;
+  --emerald-glow: rgba(16, 185, 129, 0.4);
+  --emerald-soft: rgba(16, 185, 129, 0.12);
+
+  --violet: #7C3AED;
+  --violet-light: #A78BFA;
+  --violet-glow: rgba(124, 58, 237, 0.4);
+  --violet-soft: rgba(124, 58, 237, 0.12);
+
+  --gold: #F59E0B;
+  --gold-light: #FCD34D;
+  --gold-glow: rgba(245, 158, 11, 0.4);
+  --gold-soft: rgba(245, 158, 11, 0.12);
+
+  --crimson: #EF4444;
+  --crimson-glow: rgba(239, 68, 68, 0.35);
+  --crimson-soft: rgba(239, 68, 68, 0.1);
+
+  --cyan: #06B6D4;
+  --cyan-glow: rgba(6, 182, 212, 0.35);
+
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.3);
+}
+
+.theme-reveal {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 999999;
+  pointer-events: none;
+  background: var(--bg-void);
+  clip-path: circle(0% at var(--x) var(--y));
+  transition: clip-path 0.35s ease-out;
+  will-change: clip-path;
+  transform: translateZ(0);
+}
+.theme-reveal.active {
+  clip-path: circle(120% at var(--x) var(--y));
+}
+.theme-toggle-active {
+  transition: transform 0.1s ease-out;
+  transform: scale(0.92);
+}
+</style>
+</head>
+<body>
+`;
+}
+`
