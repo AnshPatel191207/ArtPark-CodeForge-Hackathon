@@ -151,3 +151,5 @@ ${JSON.stringify(config || {})}
     return c.json({ error: 'Internal server error', details: err.message, stack: err.stack }, 500)
   }
 })
+
+export default app
