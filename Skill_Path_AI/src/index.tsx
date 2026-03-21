@@ -43,3 +43,46 @@ When answering:
 - Provide time estimates for learning when relevant
 - Be encouraging and practical
 - If a question is unrelated to career/skills/learning, politely redirect the conversation`
+
+app.post('/api/chat', async (c: any) => {
+  try {
+    const { message, history } = await c.req.json<{ message: string; history?: { role: string; content: string }[] }>()
+
+    if (!message) return c.json({ error: 'Message is required' }, 400)
+    if (!GROQ_API_KEY) return c.json({ error: 'API key not configured' }, 500)
+
+    const messages = [
+      { role: 'system', content: SYSTEM_PROMPT },
+      ...(history || []),
+      { role: 'user', content: message },
+    ]
+
+    const groqRes = await fetch(GROQ_URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${GROQ_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'llama-3.3-70b-versatile',
+        messages,
+        temperature: 0.7,
+        max_tokens: 1024,
+      }),
+    })
+
+    if (!groqRes.ok) {
+      const errBody = await groqRes.text()
+      console.error('Groq API error:', groqRes.status, errBody)
+      return c.json({ error: 'AI service error' }, 502)
+    }
+
+    const data = await groqRes.json() as any
+    const reply = data.choices?.[0]?.message?.content || 'Sorry, I could not generate a response.'
+
+    return c.json({ reply })
+  } catch (err: any) {
+    console.error('Chat API error:', err)
+    return c.json({ error: 'Internal server error' }, 500)
+  }
+})
