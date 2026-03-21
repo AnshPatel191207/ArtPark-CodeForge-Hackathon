@@ -618,6 +618,40 @@ body{
 .search-item-info { flex: 1; }
 .search-item-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
 .search-item-meta { font-size: 11px; color: var(--text-muted); }
+
+/* ── GLOW BORDER ANIMATION ── */
+@keyframes borderGlow {
+  0% { border-color: rgba(37,99,235,0.2); }
+  50% { border-color: rgba(37,99,235,0.5); box-shadow: 0 0 15px rgba(37,99,235,0.2); }
+  100% { border-color: rgba(37,99,235,0.2); }
+}
+.glow-pulse-border { animation: borderGlow 3s infinite; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.96)}to{opacity:1;transform:scale(1)}}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes glow-pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes shimmer-text{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+.anim-fade-up{animation:fadeInUp 0.5s ease both}
+.anim-fade{animation:fadeIn 0.4s ease both}
+.anim-scale{animation:scaleIn 0.3s ease both}
+.delay-1{animation-delay:0.1s}.delay-2{animation-delay:0.2s}.delay-3{animation-delay:0.3s}.delay-4{animation-delay:0.4s}.delay-5{animation-delay:0.5s}
+
+/* ── GRADIENT BORDERS ── */
+.gradient-border{
+  position:relative;border-radius:var(--radius-xl);
+}
+.gradient-border::before{
+  content:'';position:absolute;inset:-1px;border-radius:inherit;
+  background:linear-gradient(135deg,var(--royal-blue),var(--violet),var(--gold));
+  z-index:-1;opacity:0.4;
+}
 </style>
 </head>
 <body>
