@@ -721,9 +721,60 @@ body{
 .toast-warning{border-color:var(--gold)}
 .toast-title{font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:2px}
 .toast-body{font-size:12px;color:var(--text-secondary)}
-</style>
-</head>
-<body>
+
+/* ── LOADING SKELETON ── */
+.skeleton{
+  background:linear-gradient(90deg,rgba(255,255,255,0.04) 0%,rgba(255,255,255,0.08) 50%,rgba(255,255,255,0.04) 100%);
+  background-size:200% 100%;
+  animation:skeleton-wave 1.5s infinite;
+  border-radius:var(--radius-sm);
+}
+@keyframes skeleton-wave{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ── GLOW LINE ── */
+.glow-line{height:1px;background:linear-gradient(90deg,transparent,var(--royal-blue),var(--violet),transparent);opacity:0.5}
+
+/* ── PAGE TRANSITIONS ── */
+.page-wrapper{animation:fadeInUp 0.4s ease both}
+
+/* ── MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;z-index:1000;
+  background:rgba(1,4,13,0.85);backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:center;
+}
+.modal-box{
+  background:var(--bg-card);border:1px solid var(--border-glass);
+  border-radius:var(--radius-2xl);padding:32px;
+  max-width:600px;width:100%;
+  box-shadow:0 30px 80px rgba(0,0,0,0.6);
+  animation:scaleIn 0.2s ease both;
+}
+.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.modal-title{font-size:20px;font-weight:700;color:var(--text-primary);font-family:var(--font-display)}
+
+/* ── GRID HELPERS ── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:20px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+
+/* ── DONUT CHART ── */
+.donut-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}
+.donut-center{position:absolute;text-align:center}
+.donut-value{font-size:28px;font-weight:800;font-family:var(--font-display);line-height:1}
+.donut-sub{font-size:11px;color:var(--text-muted);margin-top:2px}
+
+/* ── EMPTY STATE ── */
+.empty-state{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:60px 20px;text-align:center;
+}
+.empty-icon{font-size:48px;margin-bottom:16px;opacity:0.4}
+.empty-title{font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:8px}
+.empty-body{font-size:14px;color:var(--text-secondary);max-width:300px}
+</style>`;
+}
 `;
 }
 `
