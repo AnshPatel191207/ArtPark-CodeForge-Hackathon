@@ -774,7 +774,106 @@ body{
 .empty-title{font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:8px}
 .empty-body{font-size:14px;color:var(--text-secondary);max-width:300px}
 </style>`;
+
+export function sidebar(active: string): string {
+  const items = [
+    { id: 'dashboard', label: 'Dashboard', href: '/dashboard', icon: `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="11" y="1" width="6" height="6" rx="1.5"/><rect x="1" y="11" width="6" height="6" rx="1.5"/><rect x="11" y="11" width="6" height="6" rx="1.5"/></svg>` },
+    { id: 'upload', label: 'Upload Resume', href: '/upload', icon: `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12v2a1 1 0 001 1h10a1 1 0 001-1v-2M9 2v9M6 5l3-3 3 3"/></svg>` },
+    { id: 'skill-analytics', label: 'Skill Analysis', href: '/skill-analytics', icon: `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="7"/><path d="M9 9l4-4M9 2v2M16 9h-2M9 14v2M4 4l1.4 1.4"/></svg>` },
+    { id: 'roadmap', label: 'Roadmap', href: '/roadmap', icon: `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 2h10M4 9h10M4 16h10"/><circle cx="2" cy="2" r="1.5" fill="currentColor"/><circle cx="2" cy="9" r="1.5" fill="currentColor"/><circle cx="2" cy="16" r="1.5" fill="currentColor"/></svg>` },
+    { id: 'career-insights', label: 'Career Insights', href: '/career-insights', icon: `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 14l4-5 3 2 5-7"/><circle cx="15" cy="4" r="1.5"/></svg>`, badge: 'New' },
+    { id: 'ai-chat', label: 'AI Assistant', href: '/ai-chat', icon: `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 3h14a1 1 0 011 1v8a1 1 0 01-1 1H6l-4 3V4a1 1 0 011-1z"/></svg>` },
+    { id: 'settings', label: 'Settings', href: '/settings', icon: `<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="2.5"/><path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.2 3.2l1.4 1.4M13.4 13.4l1.4 1.4M14.8 3.2l-1.4 1.4M4.6 13.4l-1.4 1.4"/></svg>` },
+  ];
+  return `<aside class="sidebar">
+  <div class="sidebar-logo">
+    <a href="/" class="logo-mark">
+      <div class="logo-icon" style="background:linear-gradient(135deg,#1e293b,#0f172a);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(66,133,244,0.15)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4285F4" />
+              <stop offset="50%" style="stop-color:#9B72F3" />
+              <stop offset="100%" style="stop-color:#FB923C" />
+            </linearGradient>
+          </defs>
+          <path d="M12 3C12 3 13.5 10 19 12C13.5 14 12 21 12 21C12 21 10.5 14 5 12C10.5 10 12 3 12 3Z" fill="url(#logoGrad)" />
+          <circle cx="12" cy="12" r="1.5" fill="white" style="opacity:0.6" />
+        </svg>
+      </div>
+      <span style="background:linear-gradient(90deg,#fff,#9B72F3,#FB923C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:800">SkillPath AI</span>
+    </a>
+  </div>
+  <div style="padding:8px 12px 0">
+    <div class="status-pill" style="font-size:11px;padding:5px 10px;width:fit-content">
+      <div class="status-dot"></div>AI Active
+    </div>
+  </div>
+  <div class="sidebar-section">Navigation</div>
+  <nav class="sidebar-nav">
+    ${items.map(i => `
+    <a href="${i.href}" class="nav-item${active === i.id ? ' active' : ''}">
+      <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">${i.icon.replace(/<svg[^>]*>/, '').replace('</svg>', '')}</svg>
+      <span>${i.label}</span>
+      ${i.badge ? `<span class="nav-badge">${i.badge}</span>` : ''}
+    </a>`).join('')}
+    <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border-subtle)">
+    <a href="/admin" class="nav-item${active === 'admin' ? ' active' : ''}">
+      <svg class="nav-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="6" r="3"/><path d="M2 16c0-3.3 3.1-6 7-6s7 2.7 7 6"/></svg>
+      <span>Admin Panel</span>
+    </a>
+    </div>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="/settings" class="sidebar-user" id="sidebarUserBtn">
+      <div class="user-avatar" id="sidebarAvatar">A</div>
+      <div>
+        <div class="user-name" id="sidebarName">Alex Morgan</div>
+        <div class="user-role">Sr. Engineer · Onboarding</div>
+      </div>
+    </a>
+  </div>
+</aside>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const profileStr = localStorage.getItem('userProfile');
+  if (profileStr) {
+    try {
+      const p = JSON.parse(profileStr);
+      // Sidebar update
+      const nameEl = document.getElementById('sidebarName');
+      const avatarEl = document.getElementById('sidebarAvatar');
+      const roleEl = document.querySelector('.sidebar-user .user-role');
+
+      if (nameEl && p.firstName) {
+        nameEl.textContent = p.firstName + ' ' + (p.lastName || '');
+      } else if (nameEl && p.name) {
+        nameEl.textContent = p.name;
+      }
+
+      if (roleEl && p.role) {
+        roleEl.textContent = p.role + (p.dept ? ' · ' + p.dept : '');
+      }
+
+      if (avatarEl) {
+        if (p.picture) {
+          avatarEl.innerHTML = '<img src="'+p.picture+'" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" referrerpolicy="no-referrer">';
+          avatarEl.style.background = 'none';
+        } else if (p.firstName) {
+          avatarEl.textContent = p.firstName.charAt(0).toUpperCase();
+        } else if (p.name) {
+          avatarEl.textContent = p.name.charAt(0).toUpperCase();
+        }
+      }
+
+      // Header update
+      const headerSubtitle = document.querySelector('.header-left > div > div:nth-child(2)');
+      if (headerSubtitle && headerSubtitle.textContent.includes('Welcome back')) {
+        const firstName = p.firstName || (p.name ? p.name.split(' ')[0] : 'User');
+        headerSubtitle.textContent = 'Welcome back, ' + firstName + ' · Last analysis 2h ago';
+      }
+    } catch(e) { console.error('Sidebar profile error', e) }
+  }
+});
+</script>`;
 }
-`;
-}
-`
