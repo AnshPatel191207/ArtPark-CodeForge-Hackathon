@@ -499,6 +499,36 @@ body{
 .toggle input:checked ~ .toggle-thumb,
 .toggle input:checked + .toggle-track + .toggle-thumb{transform:translateX(20px)}
 .toggle-label{font-size:14px;color:var(--text-secondary)}
+
+/* ── GRADIENT TEXT ── */
+.gradient-text-blue{background:linear-gradient(135deg,var(--royal-blue-light),var(--violet-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-royal{background:linear-gradient(135deg,var(--royal-blue-light),var(--violet-light),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gradient-text-emerald{background:linear-gradient(135deg,var(--emerald),var(--emerald-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ── CHIP / FILTER ── */
+.chip{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:var(--radius-full);
+  font-size:12px;font-weight:600;cursor:pointer;
+  border:1px solid var(--border-glass);
+  background:var(--bg-alpha-med);color:var(--text-secondary);
+  transition:all 0.2s;
+}
+.chip:hover,.chip.active{
+  background:rgba(37,99,235,0.15);border-color:rgba(37,99,235,0.4);color:var(--royal-blue-light);
+}
+
+/* ── TOOLTIP ── */
+.tooltip-wrap{position:relative;display:inline-flex}
+.tooltip{
+  position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+  background: var(--bg-surface); border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm); padding: 6px 12px; font-size: 12px; color: var(--text-primary);
+  white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.2s;
+  box-shadow: var(--shadow-card);
+}
+.tooltip-wrap:hover .tooltip{opacity:1}
 </style>
 </head>
 <body>
