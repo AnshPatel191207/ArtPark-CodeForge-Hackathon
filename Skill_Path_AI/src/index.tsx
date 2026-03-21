@@ -12,26 +12,25 @@ import { profileSettings } from './pages/profile-settings'
 import { roadmap } from './pages/roadmap'
 import { login } from './pages/login'
 import { signup } from './pages/signup'
-
 const app = new Hono()
 
 app.use('/static/*', serveStatic({ root: './public' }))
 
-app.get('/', (c: any) => c.html(landing()))
-app.get('/upload', (c: any) => c.html(upload()))
-app.get('/dashboard', (c: any) => c.html(dashboard()))
-app.get('/ai-chat', (c: any) => c.html(aiChat()))
-app.get('/career-insights', (c: any) => c.html(careerInsights()))
-app.get('/course/:id', (c: any) => c.html(courseSubscription(c.req.param('id'))))
-app.get('/skill-analytics', (c: any) => c.html(skillAnalytics()))
-app.get('/admin', (c: any) => c.html(adminPanel()))
-app.get('/roadmap', (c: any) => c.html(roadmap()))
-app.get('/settings', (c: any) => c.html(profileSettings()))
-app.get('/login', (c: any) => c.html(login()))
-app.get('/signup', (c: any) => c.html(signup()))
+app.get('/', (c) => c.html(landing()))
+app.get('/upload', (c) => c.html(upload()))
+app.get('/dashboard', (c) => c.html(dashboard()))
+app.get('/ai-chat', (c) => c.html(aiChat()))
+app.get('/career-insights', (c) => c.html(careerInsights()))
+app.get('/course/:id', (c) => c.html(courseSubscription(c.req.param('id'))))
+app.get('/skill-analytics', (c) => c.html(skillAnalytics()))
+app.get('/admin', (c) => c.html(adminPanel()))
+app.get('/roadmap', (c) => c.html(roadmap()))
+app.get('/settings', (c) => c.html(profileSettings()))
+app.get('/login', (c) => c.html(login()))
+app.get('/signup', (c) => c.html(signup()))
 
 // ── Groq AI Chat API ────────────────────────────────────────
-const GROQ_API_KEY = 'gsk_REPLACE_WITH_YOUR_KEY'
+const GROQ_API_KEY = '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'
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions'
 const SYSTEM_PROMPT = `You are SkillPath AI, a friendly and expert career-coaching assistant embedded in a skill-gap analysis platform.
 
@@ -44,7 +43,7 @@ When answering:
 - Be encouraging and practical
 - If a question is unrelated to career/skills/learning, politely redirect the conversation`
 
-app.post('/api/chat', async (c: any) => {
+app.post('/api/chat', async (c) => {
   try {
     const { message, history } = await c.req.json<{ message: string; history?: { role: string; content: string }[] }>()
 
@@ -102,7 +101,7 @@ The JSON must perfectly match this structure:
 }
 Make sure your roadmap ONLY teaches the missing skills, and avoids teaching what the user already knows from their resume.`
 
-app.post('/api/analyze', async (c: any) => {
+app.post('/api/analyze', async (c) => {
   try {
     const { resumeText, jdText, config } = await c.req.json<{ resumeText?: string; jdText?: string; config?: any }>()
     if (!GROQ_API_KEY) return c.json({ error: 'API key not configured' }, 500)
