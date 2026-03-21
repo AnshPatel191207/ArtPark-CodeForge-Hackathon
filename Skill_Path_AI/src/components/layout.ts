@@ -454,6 +454,51 @@ body{
 }
 .royal-table tr:hover td{background:rgba(37,99,235,0.04)}
 .royal-table tr:last-child td{border-bottom:none}
+
+/* ── INPUT / FORM ── */
+.royal-input{
+  width:100%;padding:11px 16px;
+  background:var(--bg-alpha-med);
+  border:1px solid var(--border-glass);border-radius:var(--radius-md);
+  color:var(--text-primary);font-size:14px;font-family:var(--font-body);
+  outline:none;transition:all 0.2s;
+}
+.royal-input:focus{border-color:var(--royal-blue);background:rgba(37,99,235,0.05);box-shadow:0 0 0 3px var(--royal-blue-soft)}
+.royal-input::placeholder{color:var(--text-muted)}
+.royal-label{font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:8px;display:block;letter-spacing:0.04em}
+.royal-select{
+  width:100%;padding:11px 16px;
+  background:var(--bg-alpha-med);
+  border:1px solid var(--border-glass);border-radius:var(--radius-md);
+  color:var(--text-primary);font-size:14px;font-family:var(--font-body);
+  outline:none;cursor:pointer;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;
+  transition:all 0.2s;
+}
+.royal-select:focus{border-color:var(--royal-blue);box-shadow:0 0 0 3px var(--royal-blue-soft)}
+.royal-select option {
+  background: #111827 !important;
+  color: #ffffff !important;
+  padding: 10px;
+}
+
+/* ── TOGGLE ── */
+.toggle{position:relative;display:inline-flex;align-items:center;cursor:pointer;gap:10px}
+.toggle input{position:absolute;opacity:0;width:0;height:0}
+.toggle-track{
+  width:44px;height:24px;background:rgba(255,255,255,0.1);border-radius:12px;
+  position:relative;transition:background 0.2s;border:1px solid var(--border-glass);
+}
+.toggle input:checked + .toggle-track{background:var(--royal-blue);border-color:var(--royal-blue)}
+.toggle-thumb{
+  position:absolute;top:3px;left:3px;width:16px;height:16px;
+  background:#fff;border-radius:50%;transition:transform 0.2s;
+  box-shadow:0 2px 6px rgba(0,0,0,0.3);
+}
+.toggle input:checked ~ .toggle-thumb,
+.toggle input:checked + .toggle-track + .toggle-thumb{transform:translateX(20px)}
+.toggle-label{font-size:14px;color:var(--text-secondary)}
 </style>
 </head>
 <body>
