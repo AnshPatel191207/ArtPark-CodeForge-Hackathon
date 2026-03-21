@@ -82,6 +82,7 @@ ${extraHead}
   --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 }
+
 .dark {
   --bg-void: #01040D;
   --bg-deep: #030712;
@@ -152,7 +153,8 @@ ${extraHead}
   transition: transform 0.1s ease-out;
   transform: scale(0.92);
 }
-.thtml{min-width:1440px;overflow-x:auto}
+
+html{min-width:1440px;overflow-x:auto}
 body{
   font-family:var(--font-body);
   background:var(--bg-void);
@@ -774,6 +776,7 @@ body{
 .empty-title{font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:8px}
 .empty-body{font-size:14px;color:var(--text-secondary);max-width:300px}
 </style>`;
+}
 
 export function sidebar(active: string): string {
   const items = [
@@ -984,7 +987,7 @@ function handleGlobalSearch(query) {
   if (filtered.length === 0) {
     container.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-muted);font-size:13px">No results found</div>';
   } else {
-    container.innerHTML = filtered.map(i => `
+    container.innerHTML = filtered.map(i => \`
       <div class="search-item" onclick="window.location.href='\${i.href}'">
         <div class="search-item-icon">\${i.icon}</div>
         <div class="search-item-info">
@@ -992,7 +995,7 @@ function handleGlobalSearch(query) {
           <div class="search-item-meta">\${i.type}</div>
         </div>
       </div>
-    `).join('');
+    \`).join('');
   }
   container.classList.add('show');
 }
@@ -1073,8 +1076,7 @@ window.onclick = function(event) {
     document.querySelectorAll('.dropdown-menu').forEach(d => d.classList.remove('show'));
   }
   if (!event.target.closest('.header-search')) {
-    const results = document.getElementById('globalSearchResults');
-    if (results) results.classList.remove('show');
+    document.getElementById('globalSearchResults').classList.remove('show');
   }
 }
 </script>`;
