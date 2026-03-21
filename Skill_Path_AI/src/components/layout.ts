@@ -877,3 +877,205 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>`;
 }
+
+export function header(title: string, subtitle = ''): string {
+  return `<header class="main-header">
+  <div class="header-left">
+    <div>
+      <div class="page-title">${title}</div>
+      ${subtitle ? `<div style="font-size:12px;color:var(--text-muted);margin-top:1px">${subtitle}</div>` : ''}
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="header-search" style="position:relative">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#64748B" stroke-width="1.8"><circle cx="7" cy="7" r="5"/><path d="M11 11l3 3"/></svg>
+      <input type="text" placeholder="Search skills, courses, pages..." id="globalSearchInput" oninput="handleGlobalSearch(this.value)">
+      <div class="search-results" id="globalSearchResults"></div>
+    </div>
+    
+    <!-- Notifications -->
+    <div style="position:relative">
+      <div class="header-btn" title="Notifications" onclick="toggleDropdown('notifDropdown')">
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 1a6 6 0 016 6v4l2 2H1l2-2V7a6 6 0 016-6z"/><path d="M7 15c0 1.1.9 2 2 2s2-.9 2-2"/></svg>
+        <div class="notif-dot"></div>
+      </div>
+      <div class="dropdown-menu" id="notifDropdown">
+        <div class="dropdown-header">
+          <span style="font-size:13px;font-weight:700">Notifications</span>
+          <button class="btn btn-ghost btn-sm" style="padding:2px 8px;font-size:11px" onclick="clearNotifications()">Clear all</button>
+        </div>
+        <div class="dropdown-body" id="notifBody">
+          <div class="dropdown-item">
+            <div style="width:32px;height:32px;border-radius:8px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;font-size:14px">🛤️</div>
+            <div>
+              <div style="font-size:12px;font-weight:600">Roadmap Generated</div>
+              <div style="font-size:11px;color:var(--text-muted)">Your 3-week learning plan is ready.</div>
+            </div>
+            <div style="margin-left:auto;width:6px;height:6px;background:var(--royal-blue);border-radius:50%"></div>
+          </div>
+          <div class="dropdown-item">
+            <div style="width:32px;height:32px;border-radius:8px;background:rgba(37,99,235,0.1);display:flex;align-items:center;justify-content:center;font-size:14px">📄</div>
+            <div>
+              <div style="font-size:12px;font-weight:600">Resume Analyzed</div>
+              <div style="font-size:11px;color:var(--text-muted)">Analysis for Senior Engineer role complete.</div>
+            </div>
+            <div style="margin-left:auto;width:6px;height:6px;background:var(--royal-blue);border-radius:50%"></div>
+          </div>
+        </div>
+        <div class="dropdown-footer">
+          <a href="#" style="font-size:12px;color:var(--royal-blue-light);text-decoration:none;font-weight:600">View all notifications</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Help -->
+    <div style="position:relative">
+      <div class="header-btn" title="Help" onclick="toggleDropdown('helpDropdown')">
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="7"/><path d="M9 12v-1c0-1.5 1.5-2 2-3a2 2 0 00-4 0"/><circle cx="9" cy="14" r="0.5" fill="currentColor"/></svg>
+      </div>
+      <div class="dropdown-menu" id="helpDropdown" style="width:240px">
+        <div class="dropdown-header"><span style="font-size:13px;font-weight:700">Help & Support</span></div>
+        <div class="dropdown-body">
+          <a href="#" class="dropdown-item"><span>❓</span> FAQ & Documentation</a>
+          <a href="#" class="dropdown-item"><span>📖</span> How to use SkillPath</a>
+          <a href="#" class="dropdown-item"><span>💬</span> Contact Support</a>
+          <a href="#" class="dropdown-item"><span>✨</span> What's New</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="header-btn" title="Toggle Theme" id="themeToggle" onclick="toggleTheme(event)">
+      <svg class="sun-icon" width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" style="display:none"><circle cx="9" cy="9" r="4"/><path d="M9 1v2M9 15v2M1 9h2M15 9h2M3.2 3.2l1.4 1.4M13.4 13.4l1.4 1.4"/></svg>
+      <svg class="moon-icon" width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 10a7 7 0 11-7-7 5 5 0 007 7z"/></svg>
+    </div>
+
+    <a href="/upload" class="btn btn-primary btn-sm">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v9M5 5L8 2l3 3M3 13h10"/></svg>
+      New Analysis
+    </a>
+  </div>
+</header>
+<script>
+const searchData = [
+  {type:'Page', name:'Dashboard', href:'/dashboard', icon:'📊'},
+  {type:'Page', name:'Skill Analysis', href:'/skill-analytics', icon:'🧠'},
+  {type:'Page', name:'Roadmap', href:'/roadmap', icon:'🛤️'},
+  {type:'Page', name:'Career Insights', href:'/career-insights', icon:'📈'},
+  {type:'Page', name:'AI Assistant', href:'/ai-chat', icon:'🤖'},
+  {type:'Skill', name:'Kubernetes', href:'/skill-analytics', icon:'☸️'},
+  {type:'Skill', name:'React.js', href:'/skill-analytics', icon:'⚛️'},
+  {type:'Skill', name:'TypeScript', href:'/skill-analytics', icon:'TS'},
+  {type:'Course', name:'AWS Solutions Architect', href:'/admin', icon:'☁️'},
+  {type:'Admin', name:'Admin Panel', href:'/admin', icon:'🔑'},
+];
+
+function handleGlobalSearch(query) {
+  const container = document.getElementById('globalSearchResults');
+  if (!query) {
+    container.classList.remove('show');
+    return;
+  }
+  const filtered = searchData.filter(i => 
+    i.name.toLowerCase().includes(query.toLowerCase()) || 
+    i.type.toLowerCase().includes(query.toLowerCase())
+  );
+  
+  if (filtered.length === 0) {
+    container.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-muted);font-size:13px">No results found</div>';
+  } else {
+    container.innerHTML = filtered.map(i => `
+      <div class="search-item" onclick="window.location.href='\${i.href}'">
+        <div class="search-item-icon">\${i.icon}</div>
+        <div class="search-item-info">
+          <div class="search-item-title">\${i.name}</div>
+          <div class="search-item-meta">\${i.type}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+  container.classList.add('show');
+}
+
+function toggleDropdown(id) {
+  const el = document.getElementById(id);
+  const wasShow = el.classList.contains('show');
+  document.querySelectorAll('.dropdown-menu').forEach(d => d.classList.remove('show'));
+  if (!wasShow) el.classList.add('show');
+}
+
+function clearNotifications() {
+  document.getElementById('notifBody').innerHTML = '<div style="padding:32px;text-align:center;color:var(--text-muted);font-size:13px">No new notifications</div>';
+  const dot = document.querySelector('.notif-dot');
+  if (dot) dot.style.display = 'none';
+}
+
+function toggleTheme(e) {
+  const btn = document.getElementById('themeToggle');
+  const rect = btn.getBoundingClientRect();
+  const x = rect.left + rect.width / 2;
+  const y = rect.top + rect.height / 2;
+  
+  const isDark = document.documentElement.classList.contains('dark');
+  const nextTheme = isDark ? 'light' : 'dark';
+  
+  // Micro-interaction: scale down on click
+  btn.classList.add('theme-toggle-active');
+  setTimeout(() => btn.classList.remove('theme-toggle-active'), 100);
+  
+  // Radial Reveal Overlay
+  let reveal = document.querySelector('.theme-reveal');
+  if (!reveal) {
+    reveal = document.createElement('div');
+    reveal.className = 'theme-reveal';
+    document.body.appendChild(reveal);
+  }
+  
+  reveal.style.setProperty('--x', x + 'px');
+  reveal.style.setProperty('--y', y + 'px');
+  
+  // Set reveal background to target theme color
+  const nextBg = nextTheme === 'dark' ? '#01040D' : '#F1F5F9';
+  reveal.style.background = nextBg;
+  
+  reveal.classList.remove('active');
+  void reveal.offsetWidth; // Force reflow
+  reveal.classList.add('active');
+  
+  // Toggle real theme ONLY AT THE END of the fast expansion (350ms)
+  setTimeout(() => {
+    document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', nextTheme);
+    updateThemeIcons();
+  }, 350);
+  
+  // Clean up
+  setTimeout(() => {
+    reveal.classList.remove('active');
+  }, 450);
+}
+
+function updateThemeIcons() {
+  const isDark = document.documentElement.classList.contains('dark');
+  const sun = document.querySelector('.sun-icon');
+  const moon = document.querySelector('.moon-icon');
+  if (sun && moon) {
+    sun.style.display = isDark ? 'block' : 'none';
+    moon.style.display = isDark ? 'none' : 'block';
+  }
+}
+
+// Initial icon setup
+setTimeout(updateThemeIcons, 100);
+
+window.onclick = function(event) {
+  if (!event.target.closest('.header-btn') && !event.target.closest('.dropdown-menu')) {
+    document.querySelectorAll('.dropdown-menu').forEach(d => d.classList.remove('show'));
+  }
+  if (!event.target.closest('.header-search')) {
+    const results = document.getElementById('globalSearchResults');
+    if (results) results.classList.remove('show');
+  }
+}
+</script>`;
+}
