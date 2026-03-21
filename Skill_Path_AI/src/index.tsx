@@ -101,3 +101,53 @@ The JSON must perfectly match this structure:
   "reasoningTrace": [ { "title": "string", "body": "string", "confidence": <number 0-100> } ]
 }
 Make sure your roadmap ONLY teaches the missing skills, and avoids teaching what the user already knows from their resume.`
+
+app.post('/api/analyze', async (c: any) => {
+  try {
+    const { resumeText, jdText, config } = await c.req.json<{ resumeText?: string; jdText?: string; config?: any }>()
+    if (!GROQ_API_KEY) return c.json({ error: 'API key not configured' }, 500)
+
+    const userContent = `
+=== RESUME ===
+${resumeText || 'No resume text provided.'}
+
+=== JOB DESCRIPTION ===
+${jdText || 'No JD text provided.'}
+
+=== CONFIG ===
+${JSON.stringify(config || {})}
+`
+
+    const groqRes = await fetch(GROQ_URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${GROQ_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'llama-3.3-70b-versatile',
+        messages: [
+          { role: 'system', content: ANALYZE_PROMPT },
+          { role: 'user', content: userContent }
+        ],
+        temperature: 0.2,
+        max_tokens: 3000,
+        response_format: { type: 'json_object' }
+      }),
+    })
+
+    if (!groqRes.ok) {
+      console.error('Groq API error:', await groqRes.text())
+      return c.json({ error: 'AI service error' }, 502)
+    }
+
+    const data = await groqRes.json() as any
+    const content = data.choices?.[0]?.message?.content || '{}'
+    c.header('Content-Type', 'application/json')
+    return c.body(content)
+
+  } catch (err: any) {
+    console.error('Analyze API error:', err)
+    return c.json({ error: 'Internal server error', details: err.message, stack: err.stack }, 500)
+  }
+})
