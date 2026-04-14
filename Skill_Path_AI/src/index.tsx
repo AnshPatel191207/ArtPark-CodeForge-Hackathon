@@ -1,5 +1,4 @@
 import { Hono } from 'hono'
-import { serveStatic } from 'hono/cloudflare-workers'
 import { landing } from './pages/landing'
 import { upload } from './pages/upload'
 import { dashboard } from './pages/dashboard'
@@ -13,8 +12,6 @@ import { roadmap } from './pages/roadmap'
 import { login } from './pages/login'
 import { signup } from './pages/signup'
 const app = new Hono()
-
-app.use('/static/*', serveStatic({ root: './public' }))
 
 app.get('/', (c) => c.html(landing()))
 app.get('/upload', (c) => c.html(upload()))
@@ -30,7 +27,7 @@ app.get('/login', (c) => c.html(login()))
 app.get('/signup', (c) => c.html(signup()))
 
 // ── Groq AI Chat API ────────────────────────────────────────
-const GROQ_API_KEY = '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'
+const GROQ_API_KEY = process.env.GROQ_API_KEY ?? ''
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions'
 const SYSTEM_PROMPT = `You are SkillPath AI, a friendly and expert career-coaching assistant embedded in a skill-gap analysis platform.
 

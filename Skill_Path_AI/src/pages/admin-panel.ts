@@ -230,11 +230,3 @@ function handleDrop(e){
 </script>
 </html>`;
 }
-
-// commit update #1
-
-// commit update #7
-
-// commit update #13
-
-// commit update #19

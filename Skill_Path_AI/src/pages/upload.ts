@@ -592,7 +592,6 @@ try {
       
       // Save roadmap data
       localStorage.setItem('roadmapData', JSON.stringify(data));
-      localStorage.setItem('hasUploaded', 'true');
 
       // Finish visual sequence smoothly
       clearInterval(iv);

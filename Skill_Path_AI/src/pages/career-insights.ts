@@ -303,9 +303,3 @@ new Chart(document.getElementById('radarChart'),{
 </script>
 </html>`;
 }
-
-// commit update #3
-
-// commit update #9
-
-// commit update #15

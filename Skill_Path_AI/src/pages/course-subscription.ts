@@ -109,9 +109,3 @@ ${header('Course Subscription', course.name)}
 </main>
 </html>`;
 }
-
-// commit update #4
-
-// commit update #10
-
-// commit update #16

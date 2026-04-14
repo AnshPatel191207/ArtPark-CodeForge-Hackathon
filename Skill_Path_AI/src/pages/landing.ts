@@ -712,9 +712,3 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 </script>
 </html>`;
 }
-
-// commit update #6
-
-// commit update #12
-
-// commit update #18

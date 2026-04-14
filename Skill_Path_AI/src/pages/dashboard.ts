@@ -394,12 +394,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  const hasUploaded = localStorage.getItem('hasUploaded') === 'true';
-  if (!hasUploaded) {
-    window.location.href = '/upload';
-    return;
-  }
-
   const dataStr = localStorage.getItem('roadmapData');
   if (!dataStr) return; // Keep hardcoded fallback if no AI data
 
@@ -479,9 +473,3 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </html>`;
 }
-
-// commit update #5
-
-// commit update #11
-
-// commit update #17

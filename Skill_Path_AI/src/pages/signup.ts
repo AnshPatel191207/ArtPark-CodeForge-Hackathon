@@ -205,7 +205,7 @@ body {
     </div>
 
     <!-- EMAIL FORM -->
-    <form class="auth-form" onsubmit="event.preventDefault(); const hasUploaded = localStorage.getItem('hasUploaded') === 'true'; window.location.href = hasUploaded ? '/dashboard' : '/upload';">
+    <form class="auth-form" onsubmit="event.preventDefault(); window.location.href=window.location.search.includes('pending=1')?'/dashboard':'/upload';">
       <div class="form-group">
         <label class="form-label" for="name">Full Name</label>
         <input type="text" id="name" class="form-input" placeholder="Alex Morgan" required>
@@ -238,8 +238,7 @@ function handleCredentialResponse(response) {
       email: payload.email,
       picture: payload.picture
     }));
-    const hasUploaded = localStorage.getItem('hasUploaded') === 'true';
-    window.location.href = hasUploaded ? '/dashboard' : '/upload';
+    window.location.href = '/dashboard';
   } catch (e) {
     console.error('Error parsing Google JWT', e);
   }
